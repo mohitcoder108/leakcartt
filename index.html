@@ -44,7 +44,7 @@
             font-weight: 600;
             color: #444;
         }
-        input {
+        input, textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -52,7 +52,7 @@
             box-sizing: border-box;
             font-size: 16px;
         }
-        input:focus {
+        input:focus, textarea:focus {
             border-color: #d35400;
             outline: none;
         }
@@ -114,40 +114,46 @@
 
 <div class="container">
     <h1>Order at <span class="shop-name">LEAKCART</span></h1>
-    <p class="subtitle">अपना ऑर्डर यहाँ भेजें, हम आपको कॉल करेंगे.</p>
+    <p class="subtitle">अपना ऑर्डर यहाँ भेजें, हम आपको कॉल करेंगे।.</p>
 
-    <!-- FORMSPREE ACTION URL YAHAN DALEIN -->
+    <!-- FORMSPREE ACTION URL -->
     <form action="https://formspree.io/f/xyknzlel" method="POST" id="orderForm">
         
         <!-- Customer Details -->
         <div class="form-group">
-            <label>ग्राहक का नाम (Naam):</label>
-            <input type="text" name="name" placeholder="Apna naam likhein" required>
+            <label>Customer Name (Naam):</label>
+            <input type="text" name="name" placeholder="अपना नाम लिखें।" required>
         </div>
         <div class="form-group">
-            <label>मोबाइल नंबर (Mobile):</label>
+            <label>Mobile Number (Mobile):</label>
             <input type="tel" name="mobile" placeholder="10 digit number" required>
+        </div>
+
+        <!-- NEW ADDRESS FIELD ADDED HERE -->
+        <div class="form-group">
+            <label>Delivery Address (Pata):</label>
+            <textarea name="address" rows="3" placeholder="Ghar ka pata yahan likhein..." required></textarea>
         </div>
 
         <!-- Product List Section -->
         <div class="product-section">
-            <label>उत्पाद सूची (Samagri):</label>
+            <label>Product List (Samagri):</label>
             <div id="productList">
                 <!-- Default 1 row -->
                 <div class="product-row">
-                    <input type="text" name="product_name[]" placeholder="उत्पाद का नाम" required>
+                    <input type="text" name="product_name[]" placeholder="Product Name" required>
                     <input type="number" name="product_qty[]" placeholder="Qty" style="width: 60px;" required>
                     <input type="text" name="product_unit[]" placeholder="Unit (kg/pc)" style="width: 80px;" required>
                     <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
                 </div>
             </div>
-            <button type="button" class="btn-add" onclick="addRow()">+और उत्पाद जोड़ें</button>
+            <button type="button" class="btn-add" onclick="addRow()">+ Add More Product</button>
         </div>
 
         <!-- Hidden Field for Clean Email -->
         <input type="hidden" name="order_details" id="order_details">
 
-        <button type="submit" class="btn-submit">ऑर्डर सबमिट करें</button>
+        <button type="submit" class="btn-submit">Submit Order</button>
     </form>
 </div>
 
@@ -158,7 +164,7 @@
         const div = document.createElement('div');
         div.className = 'product-row';
         div.innerHTML = `
-            <input type="text" name="product_name[]" placeholder="उत्पाद का नाम" required>
+            <input type="text" name="product_name[]" placeholder="Product Name" required>
             <input type="number" name="product_qty[]" placeholder="Qty" style="width: 60px;" required>
             <input type="text" name="product_unit[]" placeholder="Unit (kg/pc)" style="width: 80px;" required>
             <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
@@ -173,9 +179,6 @@
 
     // Form submit hone se pehle data clean karna
     document.getElementById('orderForm').addEventListener('submit', function(e) {
-        // Formspree automatically handle karega, lekin hum email ko clean rakhne ke liye
-        // ek hidden field mein saara data jama karenge taaki email padhne mein aasaan ho.
-        
         let details = "";
         const rows = document.querySelectorAll('.product-row');
         
@@ -192,5 +195,4 @@
 </script>
 
 </body>
-
 </html>
