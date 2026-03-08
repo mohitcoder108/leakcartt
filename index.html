@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEAKCART - Order Form</title>
+    <title>Dhan Laxmi Enterprises - Order Form</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -113,7 +113,7 @@
 <body>
 
 <div class="container">
-    <h1>Order at <span class="shop-name">LEAKCART</span></h1>
+    <h1>Order at <span class="shop-name">Dhan Laxmi Enterprises</span></h1>
     <p class="subtitle">अपना ऑर्डर यहाँ भेजें, हम आपको कॉल करेंगे।.</p>
 
     <!-- FORMSPREE ACTION URL -->
@@ -121,39 +121,39 @@
         
         <!-- Customer Details -->
         <div class="form-group">
-            <label>Customer Name (Naam):</label>
+            <label>ग्राहक का नाम (Naam):</label>
             <input type="text" name="name" placeholder="अपना नाम लिखें।" required>
         </div>
         <div class="form-group">
-            <label>Mobile Number (Mobile):</label>
+            <label>मोबाइल नंबर (Mobile):</label>
             <input type="tel" name="mobile" placeholder="10 digit number" required>
         </div>
 
         <!-- NEW ADDRESS FIELD ADDED HERE -->
         <div class="form-group">
-            <label>Delivery Address (Pata):</label>
-            <textarea name="address" rows="3" placeholder="Ghar ka pata yahan likhein..." required></textarea>
+            <label>डिलीवरी पता (Pata):</label>
+            <textarea name="address" rows="3" placeholder="दुकान का पता यहाँ लिखें।..." required></textarea>
         </div>
 
         <!-- Product List Section -->
         <div class="product-section">
-            <label>Product List (Samagri):</label>
+            <label>उत्पाद सूची (Samagri):</label>
             <div id="productList">
                 <!-- Default 1 row -->
                 <div class="product-row">
-                    <input type="text" name="product_name[]" placeholder="Product Name" required>
+                    <input type="text" name="product_name[]" placeholder="उत्पाद का नाम" required>
                     <input type="number" name="product_qty[]" placeholder="Qty" style="width: 60px;" required>
                     <input type="text" name="product_unit[]" placeholder="Unit (kg/pc)" style="width: 80px;" required>
                     <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
                 </div>
             </div>
-            <button type="button" class="btn-add" onclick="addRow()">+ Add More Product</button>
+            <button type="button" class="btn-add" onclick="addRow()">+ और उत्पाद जोड़ें</button>
         </div>
 
         <!-- Hidden Field for Clean Email -->
         <input type="hidden" name="order_details" id="order_details">
 
-        <button type="submit" class="btn-submit">Submit Order</button>
+        <button type="submit" class="btn-submit">ऑर्डर सबमिट करें</button>
     </form>
 </div>
 
@@ -164,7 +164,7 @@
         const div = document.createElement('div');
         div.className = 'product-row';
         div.innerHTML = `
-            <input type="text" name="product_name[]" placeholder="Product Name" required>
+            <input type="text" name="product_name[]" placeholder="उत्पाद का नाम" required>
             <input type="number" name="product_qty[]" placeholder="Qty" style="width: 60px;" required>
             <input type="text" name="product_unit[]" placeholder="Unit (kg/pc)" style="width: 80px;" required>
             <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
@@ -196,3 +196,4 @@
 
 </body>
 </html>
+
